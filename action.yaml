@@ -1,0 +1,20 @@
+# action.yaml
+name: 'Check Version Custom Github Action'
+description: 'Check version format is valid'
+inputs:
+  version_format:
+    description: 'version format used to validate version number'
+    required: true
+    default: v1
+  version_number:
+    description: 'version number to validate'
+    required: true
+outputs:
+  version_validated:
+    description: 'return code 0 / 1'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version_format }}
+    - ${{ inputs.version_number }}

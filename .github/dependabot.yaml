@@ -1,0 +1,31 @@
+---
+version: 2
+
+# registries:
+#   dockerhub:
+#     type: docker-registry
+#     url: https://registry.hub.docker.com
+#     username: ${{secrets.MY_DOCKERHUB_USERNAME}}
+#     password: ${{secrets.MY_DOCKERHUB_PASSWORD}}
+
+updates:      
+  - package-ecosystem: "github-actions"
+    open-pull-requests-limit: 5
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "triage-soc"
+
+  # - package-ecosystem: "docker"
+  #   directory: "/docker"
+  #   target-branch: "main"
+  #   schedule:
+  #     interval: "daily"
+  #   registries:
+  #     - dockerhub
+  #   open-pull-requests-limit: 0 
+  #   labels:
+  #     - "docker dependencies"
+  #     - "production"
+  #     - "triage-soc"

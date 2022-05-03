@@ -1,0 +1,32 @@
+---
+config/github:
+- ['.github/*', '.github/**/*']
+
+dependencies:
+- build.sbt
+- pom.xml
+- requirements.txt
+
+docker:
+- Dockerfile
+
+documentation:
+- '*.md'
+- '**/*.md'
+
+javascript:
+- '**/*.js'
+
+licenses:
+- LICENSES/*
+- LICENSES/**/*
+
+python:
+- requirements.txt
+- app/**/*.py
+- '**/*.py'
+
+scala:
+- build.sbt
+- pom.xml
+- src/**/*.scala
