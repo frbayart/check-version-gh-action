@@ -1,0 +1,23 @@
+on: [push]
+
+jobs:
+  custom_test:
+    runs-on: ubuntu-latest
+    name: We test it locally with act
+    steps:
+      - uses: actions/checkout@v2
+      - name: Open Web Client Directory
+        run: |
+          ls -la
+          pwd
+
+      - name: Check Version 2.1.0
+        uses: ./
+        id: version_v1_true
+        with:
+          version_format: v1
+          version_number: 2.1.0
+
+      - name: Return Code on Valid V1 Version
+        run: echo "${{ steps.version_v1_true.outputs.version_validated }}"
+
