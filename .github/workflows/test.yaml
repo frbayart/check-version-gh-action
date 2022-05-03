@@ -6,17 +6,36 @@ jobs:
     name: We test it locally with act
     steps:
       - uses: actions/checkout@v2
-      - name: Open Web Client Directory
-        run: |
-          ls -la
-          pwd
 
-      - name: Check Version 2.1.0
+      - name: Check Version V1 2.1.0
         uses: ./
         id: version_v1_true
         with:
           version_format: v1
           version_number: 2.1.0
+
+      - name: Check Version V1 2.1.0.1
+        uses: ./
+        id: version_v1_false
+        with:
+          version_format: v1
+          version_number: 2.1.0.1
+        continue-on-error: true
+
+      - name: Check Version V2 2.1.0.35
+        uses: ./
+        id: version_v2_true
+        with:
+          version_format: v2
+          version_number: 2.1.0.35
+
+      - name: Check Version V2 2.1.0
+        uses: ./
+        id: version_v2_false
+        with:
+          version_format: v2
+          version_number: 2.1.0
+        continue-on-error: true
 
       - name: Return Code on Valid V1 Version
         run: echo "${{ steps.version_v1_true.outputs.version_validated }}"
