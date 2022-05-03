@@ -1,6 +1,9 @@
 name: "PR labeling"
+on: [ pull_request_target ]
 
-on: [pull_request_target]
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   triage:
